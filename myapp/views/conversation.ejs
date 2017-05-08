@@ -1,0 +1,37 @@
+<%# views/conversation.ejs %>
+ 
+<% extend('template') %>
+<div class="container" id="HelpWindow">
+	<div class="input-group">
+		<input type="text" class="form-control" id="query" placeholder="What would you like to say?">
+		<span class="input-group-btn">
+			<button class="btn btn-default" type="button" onclick="googTranslate()">Translate</button>
+		</span>
+		</div><!-- /input-group -->
+	<div class='transTextContainer'></div>
+</div>
+
+<div class="container" id="ConvoWindow">
+	<div>
+		<input id=input placeholder=you-chat-here />
+	</div>
+	<div id=box></div>
+</div>
+<div class="container" id="HistWindow"></div>
+
+
+<script src=http://cdn.pubnub.com/pubnub.min.js></script>
+<script>(function(){
+var pubnub = PUBNUB.init({publish_key:'demo',subscribe_key:'demo',ssl:true});
+var box = PUBNUB.$('box'), input = PUBNUB.$('input'), channel = 'chat';
+pubnub.subscribe({
+    channel  : channel,
+    callback : function(text) { box.innerHTML = (''+text).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML }
+});
+PUBNUB.bind( 'keyup', input, function(e) {
+    (e.keyCode || e.charCode) === 13 && pubnub.publish({
+        channel : channel, message : input.value, x : (input.value='')
+    })
+} )
+})()</script>
+
