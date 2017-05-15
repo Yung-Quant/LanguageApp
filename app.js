@@ -4,26 +4,21 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var localtunnel = require('localtunnel');
-
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook').Strategy;
+var mongoose = require('mongoose');
+var session = require('express-session');
 var config = require('./config');
 var index = require('./routes/index');
 var conversation = require('./routes/conversation');
-
-var tunnel = localtunnel(config.port, function(err, tunnel) {
-    if (err) {
-        console.error("Tunnel error: " + err);
-    }
-    else {
-        console.log("Tunnel URL: " + tunnel.url);
-    }
-});
-
-tunnel.on('close', function() {
-    // tunnels are closed
-});
+var profile = require('./routes/profile');
 
 var app = express();
+
+var tunnel = require('./code/tunnel.js');
+tunnel.start();
+
+global.db = mongoose.connect(config.mongoose.url);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,8 +34,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({secret: 'agreatbigsecret'}));
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport')(passport);
+
 app.use('/', index);
 app.use('/conversation', conversation);
+app.use('/profile', profile);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,10 @@
+<% extend('template') %>
+
+<% if (user.facebook.id != null) { %>  
+    <h2>Facebook Info</h2>
+    <p><strong>id</strong>: <%= user.facebook.id %></p>
+    <br/>
+    <a href='/conversation'>Conversation</a>
+<% } else { %>
+    <p>Error: null user</p>
+<% } %>
