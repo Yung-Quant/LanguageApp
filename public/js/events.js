@@ -35,7 +35,7 @@ function updateHelp(word) {
     $.get(translationUrl, function(data) {
         word2def = data.data.translations[0].translatedText.replace(/(~|`|!|@|#|$|%|^|&|\*|\(|\)|{|}|\[|\]|;|:|\"|'|<|,|\.|>|\?|\/|\\|\||-|_|\+|=)/g,"");
         $.ajax({
-            url: '/define',
+            url: '/conversation/define',
             method: "GET",
             data: { word: word2def },
             dataType: "json"
