@@ -11,7 +11,7 @@
 
 }
 
-#banner{
+#banner, #navbarIcon{
     color: white;
 }
 
@@ -21,37 +21,11 @@ body{
 	padding-bottom: 25px; /*50px for the height of the bottom navbar*/
 }
 
-#HelpWindow{
+#HelpWindow, #ConvoWindow, #HistWindow{
     background: white;
     height: 100%;
-    width: 50%;
-    float: left;
-    padding: 10px;
-    border: 10px;
-    margin: 10px;
-
-}
-
-#ConvoWindow{
-    background: white;
-    height: 100%;
-    width: 30%;
-    float: left;
-    padding: 10px;
-    border: 10px;
-    margin: 10px;
-}
-
-#HistWindow{
-    background: white;
-    height: 100%;
-    width: 12.5%;
-    float: left;
-    margin: 10px;
-}
-
-html, body {
-  height: 100%; /*Fixes the height to 100% of the viewport*/
+    width: 100%;
+    padding: 2px;
 }
 
 .panel{
@@ -86,4 +60,73 @@ html, body {
     text-align: center;
     margin-bottom: 20px;
     margin-top: 10px;
+}
+
+#messageArea {
+    height: 100vh;
+}
+
+#bot {
+    background-color: #222;
+    color: #9d9d9d;
+}
+
+#user{
+    background-color: lightgrey;
+    color: #222;
+    text-align: right;
+    margin-right: 2px;
+}
+
+#bot, #user{
+    margin-bottom: 10px;
+    padding: 4px;
+    min-height: 15px;
+}
+
+#prompts{
+    background-color: #222;
+    color: #9d9d9d;
+}
+
+#send {
+    background: tomato;
+    color: white;
+    margin-top: 10px;
+}
+
+#chat {
+    width: 40%;
+    align-self: center;
+    height: 90%;
+
+}
+
+#strategy,
+#plots {
+    overflow-y: scroll;
+    height: 90%;
+}
+
+#messageFormDiv {
+    bottom: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#messageBox {
+    height: 75%;
+    overflow-y: scroll;
+    width: 95%;
+    margin: 10px;
+    border: 1px solid black;
+
+}
+
+#messageForm {
+    bottom: 10px;
+}
+
+body {
+    overflow: hidden;
 }

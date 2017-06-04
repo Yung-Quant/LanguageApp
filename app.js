@@ -12,12 +12,14 @@ var config = require('./config');
 var index = require('./routes/index');
 var conversation = require('./routes/conversation');
 var profile = require('./routes/profile');
+var define = require('./routes/define');
+
 
 var app = express();
-
+/*
 var tunnel = require('./code/tunnel.js');
 tunnel.start();
-
+*/
 global.db = mongoose.connect(config.mongoose.url);
 
 // view engine setup
@@ -42,6 +44,8 @@ require('./config/passport')(passport);
 app.use('/', index);
 app.use('/conversation', conversation);
 app.use('/profile', profile);
+app.use('/define', define);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

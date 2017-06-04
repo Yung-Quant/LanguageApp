@@ -1,43 +1,47 @@
 <%# views/conversation.ejs %>
- 
-<% extend('template') %>
-<div class="container" id="HelpWindow">
-	<div class="input-group">
-		<input type="text" class="form-control" id="query" placeholder="What would you like to say?">
-		<span class="input-group-btn">
-			<button class="btn btn-default" type="button" onclick="googTranslate()">Translate</button>
-		</span>
-		</div><!-- /input-group -->
-	<div class='transTextContainer'></div>
-</div>
 
-<div class="container" id="ConvoWindow">
-	<div>
-		<input id=input placeholder=you-chat-here />
-	</div>
-	<div id=box></div>
-</div>
-<div class="container" id="HistWindow"></div>
+    <% extend('template') %>
 
+        <div id='messageArea' class='row'>
+            <div class='col-md-5' id="strategy">
+                <div class="container" id="HelpWindow">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="query" placeholder="What would you like to say?">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" onclick="googTranslate()">Translate</button>
+                    </span>
+                    </div>
+                    <!-- /input-group -->
+                    <div class='transTextContainer'></div>
+                </div>
+            </div>
+            <div class='col-md-4' id="chat">
+                <div class="container" id="ConvoWindow">
+                    <div class='container' id='messageBox'></div>
+                    <div class="container" id="messageFormDiv">
+                        <form id='messageForm'>
+                            <div class="form-group">
+                                <label>Enter Message</label>
+                                <textarea class='form-control' id='message' onkeydown="sendMessage(event)"></textarea>
+                                <input type='submit' class='btn btn-primary' value='Send Message' id="send"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-2' id="plots">
+                <div class="container" id="HistWindow"></div>
+            </div>
+        </div>
 
-<script src=http://cdn.pubnub.com/pubnub.min.js></script>
-<script>
-    (function(){
-        var pubnub = PUBNUB.init({ 
-            publish_key: 'demo', 
-            subscribe_key: 'demo', 
-            ssl: true 
-        });
-        var box = PUBNUB.$('box'), input = PUBNUB.$('input'), channel = 'chat';
-        pubnub.subscribe({
-            channel  : channel,
-            callback : function(text) { box.innerHTML = ('' + text).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML }
-        });
-        PUBNUB.bind( 'keyup', input, function(e) {
-            (e.keyCode || e.charCode) === 13 && pubnub.publish({
-                channel : channel, message : input.value, x : (input.value='')
-            })
-        })
-    })()
-</script>
-
+        <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+        <script src="js/chat.js"></script>
+        <script src='js/events.js'></script>
+        <script src='/socket.io/socket.io.js'> </script>
+        <script>
+        function sendMessage(e){
+            if(e.keyCode == 13){
+                $("#send").submit();
+            }
+        }
+        </script>
