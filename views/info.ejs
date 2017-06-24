@@ -1,0 +1,39 @@
+<%# views/conversation.ejs %>
+
+    <% extend('template') %>
+    <link rel="stylesheet" type="text/css" href="/css/newUser.css"></link>
+    <div class="container" style="background-color: white; width: 60%; height: 80%; padding: 20px;">
+        <div class="row">
+            <div class="col-md-8">
+                <form id="infoForm" action="/profile/addInfo" method="post">
+                    <label for="location">Where are you from?</label>
+                    <div class="input-group">
+                    <span class="input-group-addon">Location</span>
+                    <input type="text" class="form-control" name="location"></div>
+
+                    <label for="age">Age</label>
+                    <div class="input-group">
+                    <span class="input-group-addon">Age</span>
+                    <input type="text" class="form-control" name="age" style="width:20%;"></div>
+                    <label for="location">Write a quick bio for others to see!</label>
+                    <div class="input-group">
+                    <span class="input-group-addon">Bio</span>
+                    <input type="text" class="form-control" name="bio"></div>
+
+                    <label for="knownlang">What languages do you know?</label>
+                    <div class="input-group">
+                    <span class="input-group-addon">Languages</span>
+                    <input type="text" class="form-control" name="knownlang"></div>
+
+                    <label for="learnlang">What languages are you interested in learning?</label>
+                    <div class="input-group">
+                    <span class="input-group-addon">Languages</span>
+                    <input type="text" class="form-control" name="learnlang"></div>
+                    <br>
+                    <input type="submit" class="btn" value="Submit" style="color:white; background: tomato">
+                </form>
+            </div>
+        </div>
+    </div>
+            
+                

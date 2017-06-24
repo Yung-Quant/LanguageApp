@@ -1,0 +1,13 @@
+img{
+    border-radius: 10px;
+    margin: auto;
+}
+
+.thumbnail{
+    border-radius: 10px;
+}
+
+#content{
+    width: 40%;
+    align-content: center;
+}

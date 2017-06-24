@@ -1,9 +1,19 @@
 <% extend('template') %>
 
-<% if (user.facebook.id != null) { %>  
-    <h2>Facebook Info</h2>
-    <p><strong>id</strong>: <%= user.facebook.id %></p>
-    <br/>
+<link rel="stylesheet" type="text/css" href="/css/profile.css"></link>
+<% if (user.facebook.id != null) { %> 
+    <div class="container" style="width: 60%;">
+        <div class="thumbnail">
+            <div class="container" id="content">
+                <img src=<%= 'https://graph.facebook.com/' + user.facebook.id + '/picture?type=large'%> id="profilePic">
+                <div class="caption" style="align-text: centre;">
+                    <h3><%= user.username %></h3>
+                    <p><strong>About: </strong><%=  user.bio %><br><strong>From: </strong><%= user.location%><br><strong>Age: </strong><%= user.age %><br><strong>Knows: </strong><%= user.knownLangs %> <br> <strong>Looking to learn: </strong> <%= user.interestLangs %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <% } else { %>
     <p>Error: null user</p>
 <% } %>

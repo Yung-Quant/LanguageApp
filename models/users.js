@@ -5,6 +5,10 @@ var userSchema = new Schema({
   username: String,
   knownLangs: Array,
   interestLangs: Array,
+  newUser: Boolean, //check if first time visiting site, if true redirects them to a page to fill out info
+  location: String,
+  bio: String,
+  age: String,
   matches: 
   [
       {
@@ -18,6 +22,6 @@ var userSchema = new Schema({
   }
 });
 
-var userModel = db.model('User', userSchema);
+var userModel = mongoose.model('User', userSchema);
 
 module.exports = userModel;
