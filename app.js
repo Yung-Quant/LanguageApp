@@ -12,7 +12,8 @@ var config = require('./config');
 var index = require('./routes/index');
 var conversation = require('./routes/conversation');
 var profile = require('./routes/profile');
-
+var addInfo = require('./routes/addInfo');
+var findNew = require('./routes/findNew');
 
 var app = express();
 /*
@@ -43,6 +44,8 @@ require('./config/passport')(passport);
 app.use('/', index);
 app.use('/conversation', conversation);
 app.use('/profile', profile);
+app.use('/addInfo', addInfo);
+app.use('/findNew', findNew);
 
 
 // catch 404 and forward to error handler

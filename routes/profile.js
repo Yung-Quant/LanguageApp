@@ -6,7 +6,7 @@ router.get('/', auth.facebook.ensureAuthenticated, function(req, res) {
     Users.findOne({'facebook.id': req.user._doc.facebook.id}, function(err, doc){
         if(err) throw err;
         if(doc._doc.newUser == true){
-            res.render('info', {user: req.user});
+            res.redirect('/addInfo');
         }
         else{
             res.render('profile', { user: req.user });

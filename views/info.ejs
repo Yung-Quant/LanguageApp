@@ -2,10 +2,10 @@
 
     <% extend('template') %>
     <link rel="stylesheet" type="text/css" href="/css/newUser.css"></link>
-    <div class="container" style="background-color: white; width: 60%; height: 80%; padding: 20px;">
+    <div class="container" style="background-color: white; width: 60%; height: 80%; padding: 20px; border-radius: 10px;">
         <div class="row">
             <div class="col-md-8">
-                <form id="infoForm" action="/profile/addInfo" method="post">
+                <form id="infoForm" action="/addInfo/submit" method="post">
                     <label for="location">Where are you from?</label>
                     <div class="input-group">
                     <span class="input-group-addon">Location</span>
@@ -20,15 +20,27 @@
                     <span class="input-group-addon">Bio</span>
                     <input type="text" class="form-control" name="bio"></div>
 
-                    <label for="knownlang">What languages do you know?</label>
-                    <div class="input-group">
-                    <span class="input-group-addon">Languages</span>
-                    <input type="text" class="form-control" name="knownlang"></div>
+                    <label for="knownLangs">What languages do you know?</label>
+                    <div class="input-group" id="knownLangs">
+                        Help-Supported Languages
+                        <ol><input type="checkbox" name="knownlang" value="English"> English</ol>
+                        <ol><input type="checkbox" name="knownlang" value="Spanish"> Spanish</ol>
+                        <ol><input type="checkbox" name="knownlang" value="Latvian"> Latvian</ol>
+                        Other Languages
+                        <ol><input type="checkbox" name="knownlang" value="French"> French</ol>
+                        <ol><input type="checkbox" name="knownlang" value="German"> German</ol>
+                    </div>
 
-                    <label for="learnlang">What languages are you interested in learning?</label>
-                    <div class="input-group">
-                    <span class="input-group-addon">Languages</span>
-                    <input type="text" class="form-control" name="learnlang"></div>
+                    <label for="learnLangs">What languages are you interested in learning?</label>
+                    <div class="input-group" id="learnLangs">
+                    Help-Supported Languages
+                        <ol><input type="checkbox" name="learnlang" value="English"> English</ol>
+                        <ol><input type="checkbox" name="learnlang" value="Spanish"> Spanish</ol>
+                        <ol><input type="checkbox" name="learnlang" value="Latvian"> Latvian</ol>
+                        Other Languages
+                        <ol><input type="checkbox" name="learnlang" value="French"> French</ol>
+                        <ol><input type="checkbox" name="learnlang" value="German"> German</ol>
+                    </div>
                     <br>
                     <input type="submit" class="btn" value="Submit" style="color:white; background: tomato">
                 </form>

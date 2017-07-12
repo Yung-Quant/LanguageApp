@@ -102,12 +102,6 @@ body{
 
 }
 
-#strategy,
-#plots {
-    overflow-y: scroll;
-    height: 90%;
-}
-
 #messageFormDiv {
     bottom: 10px;
     width: 100%;
@@ -119,12 +113,17 @@ body{
     overflow-y: scroll;
     width: 95%;
     margin: 10px;
+    padding: 5px;
     border: 1px solid black;
 
 }
 
 #messageForm {
     bottom: 10px;
+}
+
+#message{
+    height: 30px;
 }
 
 body {
